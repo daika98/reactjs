@@ -1,23 +1,51 @@
 import React from "react";
 
 class ChildComponent extends React.Component {
+  state = {
+    showJobs: false,
+  };
+  handleShowHide = () => {
+    this.setState({
+      showJobs: !this.state.showJobs,
+    });
+  };
+
+  btnDelete = (job) => {
+    this.props.deleteJob(job);
+  };
+
   render() {
-    let { firstName, lastName, jobs } = this.props;
+    let { jobs } = this.props;
+    let showJobs = this.state.showJobs;
     return (
       <>
-        <div>
-          ChildComponent - {firstName} - {lastName}
-          <br />
+        {!showJobs ? (
           <div>
-            {jobs.map((item, index) => {
-              return (
-                <div key={item.id}>
-                  {item.job} - {item.salary}
-                </div>
-              );
-            })}
+            <button onClick={() => this.handleShowHide()}>Show</button>
           </div>
-        </div>
+        ) : (
+          <>
+            <div>
+              {jobs.map((item, index) => {
+                return (
+                  <div key={item.id}>
+                    {item.jobTitle} - {item.salary}
+                    <button
+                      className={item.key}
+                      style={{ marginLeft: 1 + "em", color: "red" }}
+                      onClick={() => this.btnDelete(item)}
+                    >
+                      X
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+            <div>
+              <button onClick={() => this.handleShowHide()}>Hide</button>
+            </div>
+          </>
+        )}
       </>
     );
   }
