@@ -1,6 +1,9 @@
 import logo from "./logo.svg";
 import "./App.scss";
-import MyComponent from "./examble/MyComponent";
+//import MyComponent from "./examble/MyComponent";
+import ToDoApp from "./ToDoApp/ToDoApp";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -14,10 +17,26 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          To Do App
         </a>
-        <MyComponent />
       </header>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {/* Same as */}
+
+      {/* <MyComponent /> */}
+      <ToDoApp />
     </div>
   );
 }

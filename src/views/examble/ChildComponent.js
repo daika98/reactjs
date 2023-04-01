@@ -31,8 +31,8 @@ class ChildComponent extends React.Component {
                   <div key={item.id}>
                     {item.jobTitle} - {item.salary}
                     <button
-                      className={item.key}
-                      style={{ marginLeft: 1 + "em", color: "red" }}
+                      key={item.key}
+                      className="ml-2"
                       onClick={() => this.btnDelete(item)}
                     >
                       X
